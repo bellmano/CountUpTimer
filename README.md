@@ -33,3 +33,16 @@ This will execute the tests and generate a coverage report.
 
 ## :gem: Website
 <a href="https://bajenguld.se"><img src="img/example.png"></a>
+
+## :handshake: Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## :mega: Issues or Suggestions
+Any issues or suggestions, please [create an issue on Github](https://github.com/bellmano/CountUpTimer/issues).
+
+## :coffee: Buy me a coffee
+Donations are welcome to appreciate my work to keep this website alive, but isn't required at all.
+
+<!-- PayPal icon/button is used from this GitHub repo: https://github.com/andreostrovsky/donate-with-paypal -->
+<a href="https://www.paypal.me/bellmano1"><img src="img/paypal.svg" height="50"></a>
