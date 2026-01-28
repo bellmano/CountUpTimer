@@ -1,7 +1,7 @@
 # :stopwatch: Count Up Timer (bajen-Edition)
 
-![Total Page Views](https://umami-github-badges.vercel.app/api/views?website=d93a0cc5-dab2-402d-a884-40b1bab7a5e3&token=api_O2dOgzOmyw1Y69y8HnngGdOtyoZ6N2Pi&range=all&style=for-the-badge&label=Total+Page+Views&cache=0&v=1)
-![Average Session Duration on Website](https://umami-github-badges.vercel.app/api/avg-session?website=d93a0cc5-dab2-402d-a884-40b1bab7a5e3&token=api_O2dOgzOmyw1Y69y8HnngGdOtyoZ6N2Pi&range=all&style=for-the-badge&label=Average+Session+Duration+on+Website&cache=0&v=1)
+![Total Page Views](https://umami-github-badges.vercel.app/api/views?website=d93a0cc5-dab2-402d-a884-40b1bab7a5e3&token=api_O2dOgzOmyw1Y69y8HnngGdOtyoZ6N2Pi&range=all&style=for-the-badge&label=Total+Page+Views&cache=0)
+![Average Session Duration on Website](https://umami-github-badges.vercel.app/api/avg-session?website=d93a0cc5-dab2-402d-a884-40b1bab7a5e3&token=api_O2dOgzOmyw1Y69y8HnngGdOtyoZ6N2Pi&range=all&style=for-the-badge&label=Average+Session+Duration+on+Website&cache=0)
 
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=bellmano_CountUpTimer&metric=coverage)](https://sonarcloud.io/summary/overall?id=bellmano_CountUpTimer)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=bellmano_CountUpTimer&metric=security_rating)](https://sonarcloud.io/summary/overall?id=bellmano_CountUpTimer)
