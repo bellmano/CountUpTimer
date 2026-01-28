@@ -1,4 +1,4 @@
-# :stopwatch: Count Up Timer (bajen-Edition)
+# :stopwatch: Count Up Timer (bajen-Edition) 1
 
 ![Total Page Views](https://umami-github-badges.vercel.app/api/views?website=d93a0cc5-dab2-402d-a884-40b1bab7a5e3&token=api_O2dOgzOmyw1Y69y8HnngGdOtyoZ6N2Pi&range=all&style=for-the-badge&label=Total+Page+Views&cache=0&v=1)
 ![Average Session Duration on Website](https://umami-github-badges.vercel.app/api/avg-session?website=d93a0cc5-dab2-402d-a884-40b1bab7a5e3&token=api_O2dOgzOmyw1Y69y8HnngGdOtyoZ6N2Pi&range=all&style=for-the-badge&label=Average+Session+Duration+on+Website&cache=0&v=1)
