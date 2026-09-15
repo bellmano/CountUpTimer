@@ -1,6 +1,6 @@
 function handleWindowOnload() {
   // Set time and date where the timer should count from
-  countUpFromTime("Oct 21, 2001 17:00:00", 'countup1');
+  countUpFromTime("Oct 21, 2001 17:00:00", "countup1");
 }
 
 window.onload = handleWindowOnload;
@@ -19,7 +19,11 @@ function countUpFromTime(countFrom, id) {
     return;
   }
 
-  let years = 0, remainingDays = 0, hours = 0, minutes = 0, seconds = 0;
+  let years = 0,
+    remainingDays = 0,
+    hours = 0,
+    minutes = 0,
+    seconds = 0;
   if (isValidDate) {
     // Calculate timezone offsets for both dates
     const countFromOffset = countFromDate.getTimezoneOffset() * 60000; // Offset in milliseconds
@@ -41,8 +45,13 @@ function countUpFromTime(countFrom, id) {
 
     // Calculate years and remaining days, accounting for leap years and DST
     remainingDays = totalDays;
-    for (let year = countFromDate.getFullYear(); year < now.getFullYear(); year++) {
-      const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+    for (
+      let year = countFromDate.getFullYear();
+      year < now.getFullYear();
+      year++
+    ) {
+      const isLeapYear =
+        (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
       const daysInYear = isLeapYear ? 366 : 365;
       if (remainingDays >= daysInYear) {
         years++;
@@ -59,15 +68,19 @@ function countUpFromTime(countFrom, id) {
     remainingDays = exactDays;
 
     hours = Math.floor((timeDifference % msInADay) / msInAnHour);
-    minutes = Math.floor(((timeDifference % msInADay) % msInAnHour) / (60 * 1000));
-    seconds = Math.floor((((timeDifference % msInADay) % msInAnHour) % (60 * 1000)) / 1000);
+    minutes = Math.floor(
+      ((timeDifference % msInADay) % msInAnHour) / (60 * 1000),
+    );
+    seconds = Math.floor(
+      (((timeDifference % msInADay) % msInAnHour) % (60 * 1000)) / 1000,
+    );
   }
 
-  idEl.getElementsByClassName('years')[0].innerHTML = years;
-  idEl.getElementsByClassName('days')[0].innerHTML = remainingDays;
-  idEl.getElementsByClassName('hours')[0].innerHTML = hours;
-  idEl.getElementsByClassName('minutes')[0].innerHTML = minutes;
-  idEl.getElementsByClassName('seconds')[0].innerHTML = seconds;
+  idEl.getElementsByClassName("years")[0].innerHTML = years;
+  idEl.getElementsByClassName("days")[0].innerHTML = remainingDays;
+  idEl.getElementsByClassName("hours")[0].innerHTML = hours;
+  idEl.getElementsByClassName("minutes")[0].innerHTML = minutes;
+  idEl.getElementsByClassName("seconds")[0].innerHTML = seconds;
 
   clearTimeout(countUpFromTime.interval);
   countUpFromTime.interval = setTimeout(countUpFromTime, 1000, countFrom, id);
@@ -75,6 +88,6 @@ function countUpFromTime(countFrom, id) {
 
 // Export for Node.js/CommonJS (test environment)
 /* istanbul ignore next */
-if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== "undefined" && module.exports) {
   module.exports = { countUpFromTime, handleWindowOnload };
 }

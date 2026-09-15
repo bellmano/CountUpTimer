@@ -1,120 +1,120 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Ensure HTML and body elements handle the full viewport properly on mobile */
 html {
-    height: 100%;
-    height: 100dvh; /* Dynamic viewport height for iOS 15+ */
-    background-color: #000; /* Fallback color to match background */
+  height: 100%;
+  height: 100dvh; /* Dynamic viewport height for iOS 15+ */
+  background-color: #000; /* Fallback color to match background */
 }
 
 body {
-    font-family: 'Kanit', sans-serif;
-    overflow: hidden;
-    /* Ensure body fills the entire viewport on iOS */
-    min-height: 100vh;
-    min-height: 100dvh; /* Dynamic viewport height for iOS 15+ */
-    margin: 0;
-    padding: 0;
+  font-family: "Kanit", sans-serif;
+  overflow: hidden;
+  /* Ensure body fills the entire viewport on iOS */
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for iOS 15+ */
+  margin: 0;
+  padding: 0;
 }
 
 h2 {
-    font-size: 2.5em;
-    font-weight: 700;
-    padding: 3rem;
-    color: #2196F3;
-    background-color: rgba(0, 0, 0, .5);
-    text-align: center;
-    white-space: nowrap;
-    margin-bottom: 20px;
-    font-family: 'Kanit', sans-serif;
+  font-size: 2.5em;
+  font-weight: 700;
+  padding: 3rem;
+  color: #2196f3;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  white-space: nowrap;
+  margin-bottom: 20px;
+  font-family: "Kanit", sans-serif;
 }
 
 .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    width: 100dvw; /* Dynamic viewport width */
-    height: 100vh;
-    height: 100dvh; /* Dynamic viewport height for iOS 15+ */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-image: url(../img/background.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    /* Handle safe areas for devices with notches/dynamic island */
-    padding-top: env(safe-area-inset-top);
-    padding-bottom: env(safe-area-inset-bottom);
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  width: 100dvw; /* Dynamic viewport width */
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for iOS 15+ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url(../img/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* Handle safe areas for devices with notches/dynamic island */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 .optimized-background {
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .countup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 20px;
-    text-align: center;
-    margin: 0 auto;
-    color: #2196F3;
-    background-color: rgba(0, 0, 0, .5);
-    padding: 20px;
-    max-width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 20px;
+  text-align: center;
+  margin: 0 auto;
+  color: #2196f3;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  max-width: 90%;
 }
 
 @media (max-width: 768px) {
-    .countup {
-        gap: 10px;
-    }
+  .countup {
+    gap: 10px;
+  }
 
-    .countup h3 {
-        font-size: 1.8em;
-    }
+  .countup h3 {
+    font-size: 1.8em;
+  }
 
-    .countup .label {
-        font-size: 1.3em;
-    }
+  .countup .label {
+    font-size: 1.3em;
+  }
 
-    h2 {
-        font-size: 1.6em;
-        padding: 1.5rem;
-    }
+  h2 {
+    font-size: 1.6em;
+    padding: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .countup {
-        gap: 8px;
-    }
+  .countup {
+    gap: 8px;
+  }
 
-    .countup h3 {
-        font-size: 1.6em;
-    }
+  .countup h3 {
+    font-size: 1.6em;
+  }
 
-    .countup .label {
-        font-size: 1.2em;
-    }
+  .countup .label {
+    font-size: 1.2em;
+  }
 
-    h2 {
-        font-size: 1.3em;
-        padding: 1rem;
-    }
+  h2 {
+    font-size: 1.3em;
+    padding: 1rem;
+  }
 }
 
 .countup .container-years,
@@ -122,19 +122,19 @@ h2 {
 .countup .container-hours,
 .countup .container-minutes,
 .countup .container-seconds {
-    text-align: center;
-    margin: 5px;
+  text-align: center;
+  margin: 5px;
 }
 
 .countup h3 {
-    font-size: 2em;
-    margin: 5px 0;
-    font-family: 'Kanit', sans-serif;
+  font-size: 2em;
+  margin: 5px 0;
+  font-family: "Kanit", sans-serif;
 }
 
 .countup .label {
-    font-size: 1.5em;
-    margin-top: 8px;
+  font-size: 1.5em;
+  margin-top: 8px;
 }
 
 .years,
@@ -142,38 +142,38 @@ h2 {
 .hours,
 .minutes,
 .seconds {
-    font-size: 3rem
+  font-size: 3rem;
 }
 
 @media (min-width: 1024px) {
-    .background {
-        background-size: cover;
-        background-position: top;
-    }
+  .background {
+    background-size: cover;
+    background-position: top;
+  }
 
-    h2 {
-        font-size: 3.5em;
-        padding: 5rem;
-    }
+  h2 {
+    font-size: 3.5em;
+    padding: 5rem;
+  }
 
-    .countup {
-        gap: 30px;
-        padding: 40px;
-    }
+  .countup {
+    gap: 30px;
+    padding: 40px;
+  }
 
-    .countup h3 {
-        font-size: 3em;
-    }
+  .countup h3 {
+    font-size: 3em;
+  }
 
-    .countup .label {
-        font-size: 2.5em;
-    }
+  .countup .label {
+    font-size: 2.5em;
+  }
 
-    .years,
-    .days,
-    .hours,
-    .minutes,
-    .seconds {
-        font-size: 5rem;
-    }
+  .years,
+  .days,
+  .hours,
+  .minutes,
+  .seconds {
+    font-size: 5rem;
+  }
 }
