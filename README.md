@@ -21,17 +21,18 @@ The story behind the date specified in the code and the background picture on th
 To run the tests and view coverage:
 
 1. Install the required dev dependency:
-	```powershell
-	npm install
-	```
+   ```powershell
+   npm install
+   ```
 2. Run the test coverage script:
-	```powershell
-	npm run test:coverage
-	```
+   ```powershell
+   npm run test:coverage
+   ```
 
 This will execute the tests and generate a coverage report.
 
 ## :gem: Website
+
 <a href="https://bajenguld.se"><img src="img/example.png"></a>
 
 ## :handshake: Contributing
@@ -39,9 +40,11 @@ This will execute the tests and generate a coverage report.
 Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## :mega: Issues or Suggestions
+
 Any issues or suggestions, please [create an issue on Github](https://github.com/bellmano/CountUpTimer/issues).
 
 ## :coffee: Buy me a coffee
+
 Donations are welcome to appreciate my work and to keep this project alive, but isn't required at all.
 
 <a href="https://ko-fi.com/bellmano"><img src="img/bellmano-kofi.jpg" width="50%"></a>
