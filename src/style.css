@@ -88,6 +88,16 @@ body {
   line-height: 1.2;
 }
 
+@media (max-width: 600px) {
+  .time-unit h2 {
+    font-size: clamp(1.5rem, 7.5vw, 2.1rem);
+  }
+
+  .time-unit .label {
+    font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+  }
+}
+
 @media (min-width: 1024px) and (min-height: 700px) {
   .background {
     background-position: center top;
@@ -116,7 +126,7 @@ body {
   }
 
   .time-unit h2 {
-    font-size: clamp(1.15rem, 6.5vw, 1.4rem);
+    font-size: clamp(1.25rem, 7vw, 1.55rem);
   }
 }
 
