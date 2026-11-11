@@ -1,22 +1,24 @@
+import countUpScript from "../src/script.js";
+
 describe("Main Script Tests", () => {
   test("exports countUpFromTime for Node.js", () => {
-    const exported = require("../src/script.js");
+    const exported = countUpScript;
     expect(exported).toHaveProperty("countUpFromTime");
     expect(typeof exported.countUpFromTime).toBe("function");
   });
   test("exports handleWindowOnload for Node.js", () => {
-    const exported = require("../src/script.js");
+    const exported = countUpScript;
     expect(exported).toHaveProperty("handleWindowOnload");
     expect(typeof exported.handleWindowOnload).toBe("function");
   });
   test("window.onload is covered", () => {
     global.window = global.window || {};
-    global.window.onload = require("../src/script.js").handleWindowOnload;
+    global.window.onload = countUpScript.handleWindowOnload;
     expect(typeof global.window.onload).toBe("function");
     global.window.onload();
   });
   test("handleWindowOnload is covered", () => {
-    const { handleWindowOnload } = require("../src/script.js");
+    const { handleWindowOnload } = countUpScript;
     expect(typeof handleWindowOnload).toBe("function");
     handleWindowOnload();
   });
@@ -53,14 +55,14 @@ describe("countUpFromTime", () => {
 
   beforeAll(() => {
     // Load script.js into global scope
-    script = require("../src/script.js");
+    script = countUpScript;
   });
 
   beforeEach(() => {
     // Mock document.getElementById
     originalGetElementById = global.document.getElementById;
     const domMap = {};
-    global.document.getElementById = jest.fn((id) => {
+    global.document.getElementById = vi.fn((id) => {
       if (!domMap[id]) {
         domMap[id] = createMockDOM();
       }
@@ -68,7 +70,7 @@ describe("countUpFromTime", () => {
     });
     // Mock setTimeout
     originalSetTimeout = global.setTimeout;
-    mockTimeout = jest.fn();
+    mockTimeout = vi.fn();
     global.setTimeout = mockTimeout;
     // Clear interval
     script.countUpFromTime.interval = undefined;
@@ -80,10 +82,10 @@ describe("countUpFromTime", () => {
   });
 
   test("handles invalid date input gracefully", () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date("Sep 13, 2025 12:00:00"));
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("Sep 13, 2025 12:00:00"));
     const mockEl = createMockDOM();
-    global.document.getElementById = jest.fn(() => mockEl);
+    global.document.getElementById = vi.fn(() => mockEl);
     expect(() => {
       script.countUpFromTime("not a date", "countup1");
     }).not.toThrow();
@@ -98,24 +100,24 @@ describe("countUpFromTime", () => {
     expect(hoursVal === 0 || Number.isNaN(hoursVal)).toBe(true);
     expect(minutesVal === 0 || Number.isNaN(minutesVal)).toBe(true);
     expect(secondsVal === 0 || Number.isNaN(secondsVal)).toBe(true);
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test("handles missing DOM elements gracefully", () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date("Sep 13, 2025 12:00:00"));
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("Sep 13, 2025 12:00:00"));
     // getElementById returns null
-    global.document.getElementById = jest.fn(() => null);
+    global.document.getElementById = vi.fn(() => null);
     expect(() => {
       script.countUpFromTime("Sep 13, 2025 12:00:00", "countup1");
     }).not.toThrow();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test("calls clearTimeout when resetting interval", () => {
     const mockEl = createMockDOM();
-    global.document.getElementById = jest.fn(() => mockEl);
-    const clearTimeoutSpy = jest.spyOn(global, "clearTimeout");
+    global.document.getElementById = vi.fn(() => mockEl);
+    const clearTimeoutSpy = vi.spyOn(global, "clearTimeout");
     script.countUpFromTime("Sep 13, 2025 11:59:00", "countup1");
     expect(clearTimeoutSpy).toHaveBeenCalled();
     clearTimeoutSpy.mockRestore();
@@ -123,7 +125,7 @@ describe("countUpFromTime", () => {
 
   test("calculates years, days, hours, minutes, seconds correctly for normal date", () => {
     const mockEl = createMockDOM();
-    global.document.getElementById = jest.fn(() => mockEl);
+    global.document.getElementById = vi.fn(() => mockEl);
     // Use a fixed date for now
     // Use real Date objects
     script.countUpFromTime("Oct 21, 2001 17:00:00", "countup1");
@@ -147,7 +149,7 @@ describe("countUpFromTime", () => {
 
   test("handles leap years correctly", () => {
     const mockEl = createMockDOM();
-    global.document.getElementById = jest.fn(() => mockEl);
+    global.document.getElementById = vi.fn(() => mockEl);
     // Leap year: 2004
     script.countUpFromTime("Jan 1, 2004 00:00:00", "countup1");
     // Should be years since 2004-01-01 to now
@@ -167,7 +169,7 @@ describe("countUpFromTime", () => {
 
   test("handles DST changes", () => {
     const mockEl = createMockDOM();
-    global.document.getElementById = jest.fn(() => mockEl);
+    global.document.getElementById = vi.fn(() => mockEl);
     // DST change: last Sunday in March (Europe)
     script.countUpFromTime("Mar 27, 2022 01:59:59", "countup1");
     expect(Number(mockEl.hours.innerHTML)).toBeGreaterThanOrEqual(0);
@@ -175,48 +177,48 @@ describe("countUpFromTime", () => {
 
   test("covers for-loop else branch (break) when remainingDays < daysInYear", () => {
     // Freeze time to a known date so the loop runs exactly once and hits the else branch
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date("Nov 01, 2025 12:00:00"));
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("Nov 01, 2025 12:00:00"));
     const mockEl = createMockDOM();
-    global.document.getElementById = jest.fn(() => mockEl);
+    global.document.getElementById = vi.fn(() => mockEl);
     // Choose a date in the previous year but with remaining days less than a full year
     script.countUpFromTime("Dec 31, 2024 00:00:00", "countup1");
     // The function should have written numeric values to the DOM
     expect(Number(mockEl.years.innerHTML)).toBeGreaterThanOrEqual(0);
     expect(Number(mockEl.days.innerHTML)).toBeGreaterThanOrEqual(0);
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test("updates DOM elements with correct values", () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date("Sep 13, 2025 11:59:00"));
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("Sep 13, 2025 11:59:00"));
     const mockEl = createMockDOM();
-    global.document.getElementById = jest.fn(() => mockEl);
+    global.document.getElementById = vi.fn(() => mockEl);
     script.countUpFromTime("Sep 13, 2025 11:59:00", "countup1");
     expect(mockEl.years.innerHTML).toBe(0);
     expect(Number(mockEl.days.innerHTML)).toBe(0);
     expect(Number(mockEl.hours.innerHTML)).toBe(0);
     expect(Number(mockEl.minutes.innerHTML)).toBe(0);
     expect(Number(mockEl.seconds.innerHTML)).toBe(0);
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test("clears previous interval and sets new one", () => {
     const mockEl = createMockDOM();
-    global.document.getElementById = jest.fn(() => mockEl);
+    global.document.getElementById = vi.fn(() => mockEl);
     script.countUpFromTime("Sep 13, 2025 11:59:00", "countup1");
     expect(mockTimeout).toHaveBeenCalled();
   });
 
   test("handles edge case: same date", () => {
-    jest.useFakeTimers();
-    jest.setSystemTime(new Date("Sep 13, 2025 12:00:00"));
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("Sep 13, 2025 12:00:00"));
     const mockEl = createMockDOM();
-    global.document.getElementById = jest.fn(() => mockEl);
+    global.document.getElementById = vi.fn(() => mockEl);
     script.countUpFromTime("Sep 13, 2025 12:00:00", "countup1");
     expect(mockEl.years.innerHTML).toBe(0);
     expect(mockEl.days.innerHTML).toBe(0);
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 });
 
@@ -226,13 +228,13 @@ describe("window.onload coverage", () => {
   let mockTimeout;
 
   beforeAll(() => {
-    script = require("../src/script.js");
+    script = countUpScript;
   });
 
   beforeEach(() => {
     originalGetElementById = global.document.getElementById;
-    global.document.getElementById = jest.fn(() => createMockDOM());
-    mockTimeout = jest.fn();
+    global.document.getElementById = vi.fn(() => createMockDOM());
+    mockTimeout = vi.fn();
     global.setTimeout = mockTimeout;
   });
 
